@@ -332,7 +332,6 @@ class BetterAliyunOssClient {
       // 提交请求
       final result = await BetterAliyunOssDioUtils.getInstance(enableLog).post<String>(
         requestUrl,
-        data: data,
         options: Options(headers: headers, responseType: ResponseType.plain),
       );
       final xml = XmlDocument.parse(result.data ?? "");
