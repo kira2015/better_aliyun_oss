@@ -1,3 +1,5 @@
+import 'better_aliyun_oss_client.dart';
+
 /// 阿里云分片信息
 class BetterAliyunOssPart {
   late String bucket;
@@ -10,6 +12,7 @@ class BetterAliyunOssPart {
   late int partRangeStart;
   late int partRangeLength;
   String? partETag;
+  BetterAliyunOssClientRequest? request;
 
   BetterAliyunOssPart();
 
@@ -58,14 +61,16 @@ class BetterAliyunOssPart {
       if (json['partRangeStart'] is int) {
         data.partRangeStart = json['partRangeStart'].toInt();
       } else {
-        data.partRangeStart = int.tryParse(json['partRangeStart'].toString()) ?? 0;
+        data.partRangeStart =
+            int.tryParse(json['partRangeStart'].toString()) ?? 0;
       }
     }
     if (json['partRangeLength'] != null) {
       if (json['partRangeLength'] is int) {
         data.partRangeLength = json['partRangeLength'].toInt();
       } else {
-        data.partRangeLength = int.tryParse(json['partRangeLength'].toString()) ?? 0;
+        data.partRangeLength =
+            int.tryParse(json['partRangeLength'].toString()) ?? 0;
       }
     }
     if (json['partETag'] != null) {
@@ -76,6 +81,6 @@ class BetterAliyunOssPart {
 
   @override
   String toString() {
-    return 'BetterAliyunOssPart{bucket: $bucket, endpoint: $endpoint, domain: $domain, objectPath: $objectPath, filePath: $filePath,  uploadId: $uploadId, partNumber: $partNumber, partRangeStart: $partRangeStart, partRangeLength: $partRangeLength, partETag: $partETag}';
+    return 'BetterAliyunOssPart{bucket: $bucket, endpoint: $endpoint, domain: $domain, objectPath: $objectPath, filePath: $filePath,  uploadId: $uploadId, partNumber: $partNumber, partRangeStart: $partRangeStart, partRangeLength: $partRangeLength, partETag: $partETag  request: $request}';
   }
 }
